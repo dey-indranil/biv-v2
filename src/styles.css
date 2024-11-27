@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Sitewide Banner */
+.banner {
+  background-image: url('./assets/banner.jpg'); /* Replace with your banner image */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.banner h1 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background: #333;
+  color: white;
+  height: 100%;
+  position: fixed;
+  overflow-y: auto;
+}
+
+.menu {
+  list-style: none;
+  padding: 20px 0;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.menu-item a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.menu-item:hover {
+  background: #555;
+  transition: background 0.3s ease;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* Section Styling */
+section {
+  padding: 40px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+section h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+section p {
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  .menu-item a {
+    font-size: 1rem;
+  }
+  .content {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .menu-item {
+    flex: 1;
+    text-align: center;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}

@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Banner from './components/Banner';
+import Sidebar from './components/Sidebar';
+import Content from './components/Content';
+import './styles.css';
+
+const sections = {
+  home: { title: "Home", content: "Welcome to our community website!" },
+  events: { title: "Events", content: "Discover upcoming events." },
+  membersCorner: { title: "Members Corner", content: "Exclusive content for our members." },
+  gallery: { title: "Gallery", content: "View photos and videos from our events." },
+  aboutUs: { title: "About Us", content: "Learn more about our organization." },
+  contactUs: { title: "Contact Us", content: "Get in touch with us!" },
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Banner />
+        <div className="container">
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<Content sections={[sections.home]} />} />
+            <Route path="/events" element={<Content sections={[sections.events]} />} />
+            <Route path="/members-corner" element={<Content sections={[sections.membersCorner]} />} />
+            <Route path="/gallery" element={<Content sections={[sections.gallery]} />} />
+            <Route path="/about-us" element={<Content sections={[sections.aboutUs]} />} />
+            <Route path="/contact-us" element={<Content sections={[sections.contactUs]} />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
