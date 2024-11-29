@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Banner from './components/Banner';
 import Sidebar from './components/Sidebar';
 import Content from './components/Content';
+import Register from './components/Register';
 import './styles.css';
 
 const sections = {
@@ -28,6 +29,7 @@ function App() {
             <Route path="/gallery" element={<Content sections={[sections.gallery]} />} />
             <Route path="/about-us" element={<Content sections={[sections.aboutUs]} />} />
             <Route path="/contact-us" element={<Content sections={[sections.contactUs]} />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </div>
