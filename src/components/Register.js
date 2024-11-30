@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,29 +18,34 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password, confirmPassword } = formData;
+
+    // Validation
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+    if (password.length < 8 || password.length > 20) {
+      setError('Password must be between 8 and 20 characters.');
+      return;
+    }
+
     try {
-        const response = await axios.post('http://localhost:4000/auth/register', formData,{
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-      console.log(response.data);
-      setMessage("User:"+response.data.email + " created successfully!");
-      setError('');
-      setFormData({ email: '', password: '' });
+      // Register user (backend will generate and send OTP)
+      await axios.post('http://localhost:4000/auth/register', { email, password });
+      // Navigate to OTP verification screen
+      navigate('/verify-email', { state: { email } });
     } catch (err) {
-      console.log(err)
-      setError(err.response?.data || 'An error occurred.');
-      setMessage('');
+      setError(err.response?.data?.message || 'An error occurred.');
     }
   };
 
   return (
     <div className="form-container">
       <h2>Register</h2>
-      {message && <p className="success-message">{message}</p>}
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
+        
         <label>
           Email:
           <input type="email" name="email" value={formData.email} onChange={handleChange} required />
@@ -42,6 +53,10 @@ const Register = () => {
         <label>
           Password:
           <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+        </label>
+        <label>
+          Re-enter Password:
+          <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
         </label>
         <button type="submit">Register</button>
       </form>
