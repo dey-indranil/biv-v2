@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Banner from './components/Banner';
 import Sidebar from './components/Sidebar';
@@ -17,11 +17,12 @@ const sections = {
   contactUs: { title: "Contact Us", content: "Get in touch with us!" },
 };
 
-function App() {
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <Router>
       <div>
-        <Banner />
+        <Banner isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <div className="container">
           <Sidebar />
           <Routes>
@@ -33,7 +34,7 @@ function App() {
             <Route path="/contact-us" element={<Content sections={[sections.contactUs]} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
           </Routes>
         </div>
       </div>

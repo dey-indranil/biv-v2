@@ -1,10 +1,10 @@
 // src/components/Banner.js
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom'; // For navigation
 import '../styles.css';
 
-const Banner = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Banner = ({ isLoggedIn, setIsLoggedIn }) => {
+  
   const navigate = useNavigate(); // Initialize navigation
 
   const handleLoginClick = () => {
@@ -15,16 +15,27 @@ const Banner = () => {
     }
   };
 
+  const handleLogoutClick = () => {
+    setIsLoggedIn(false); // Set isLoggedIn state to false
+  }
+
   const handleRegisterClick = () => {
     navigate('/register'); // Navigate to the register page
   };
 
   return (
     <header className="banner">
-      <h1>Welcome to Our Community</h1>
+      <div className="banner-content">
+        <img
+          src="/logo.png" // Replace with your logo path
+          alt="Logo"
+          className="logo"
+        />
+        <h1>Welcome to BongMilanti</h1>
+      </div>
       <div className="login-button-container">
         {isLoggedIn ? (
-          <button className="button" onClick={() => setIsLoggedIn(false)}>Logout</button>
+          <button className="button" onClick={handleLogoutClick}>Logout</button>
         ) : (
           <div className="button-group">
             <button className="button" onClick={handleLoginClick}>Login</button>
