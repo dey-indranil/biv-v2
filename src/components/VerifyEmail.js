@@ -17,7 +17,7 @@ const VerifyEmail = () => {
       setMessage('Email verified successfully!');
       setError('');
       setTimeout(() => {
-        navigate('/login');
+        navigate('/');
       }, 2000);
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid OTP.');

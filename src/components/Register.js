@@ -32,7 +32,15 @@ const Register = () => {
 
     try {
       // Register user (backend will generate and send OTP)
-      await axios.post('http://localhost:4000/auth/register', { email, password });
+      await axios.post(
+        'http://localhost:4000/auth/register',
+        { email, password },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       // Navigate to OTP verification screen
       navigate('/verify-email', { state: { email } });
     } catch (err) {

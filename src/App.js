@@ -6,6 +6,7 @@ import Content from './components/Content';
 import Register from './components/Register';
 import './styles.css';
 import VerifyEmail from './components/VerifyEmail';
+import Login from './components/Login';
 
 const sections = {
   home: { title: "Home", content: "Welcome to our community website!" },
@@ -32,6 +33,7 @@ function App() {
             <Route path="/contact-us" element={<Content sections={[sections.contactUs]} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
