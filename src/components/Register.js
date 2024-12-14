@@ -33,7 +33,7 @@ const Register = () => {
     try {
       // Register user (backend will generate and send OTP)
       await axios.post(
-        'http://localhost:4000/auth/register',
+        '{process.env.REACT_APP_BACKEND_URL}/auth/register',
         { email, password },
         {
           headers: {
