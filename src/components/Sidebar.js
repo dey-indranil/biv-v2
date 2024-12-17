@@ -10,6 +10,7 @@ const Sidebar = () => {
         <li className="menu-item"><Link to="/events">Events</Link></li>
         <li className="menu-item"><Link to="/members-corner">Members Corner</Link></li>
         <li className="menu-item"><Link to="/gallery">Gallery</Link></li>
+        <li className="menu-item"><Link to="/merch">Tickets & Merchandise</Link></li>
         <li className="menu-item"><Link to="/about-us">About Us</Link></li>
         <li className="menu-item"><Link to="/contact-us">Contact Us</Link></li>
       </ul>

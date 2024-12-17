@@ -94,7 +94,7 @@ body {
 }
 
 .menu-item:hover {
-  transform: scale(1.1); /* Slightly enlarges the menu item */
+  transform: scale(1.15); /* Slightly enlarges the menu item */
   background: #444; /* Changes background color */
   border-radius: 8px; /* Adds rounded corners for a smooth look */
 }
