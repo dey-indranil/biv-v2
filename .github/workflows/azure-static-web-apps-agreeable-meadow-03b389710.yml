@@ -25,6 +25,19 @@ jobs:
           echo "REACT_APP_BACKEND_URL=https://biv-v2-backend-hufvh9bcahbgbhaa.canadacentral-01.azurewebsites.net" >> .env
           cat .env
 
+      # Install dependencies and build React app
+      - name: Install Dependencies and Build
+        run: |
+          npm install
+          npm run build
+        env:
+          CI: true # Ensures the build process behaves like production
+
+      - name: Verify Build Output
+        run: |
+          ls -R build
+          echo "Build output verified"
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
