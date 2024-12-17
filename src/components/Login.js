@@ -22,7 +22,7 @@ const Login = ({ setIsLoggedIn }) => {
     try {
       // Login user
       const response = await axios.post(
-        '{process.env.REACT_APP_BACKEND_URL}/auth/login',
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
         { email, password },
         {
           headers: {

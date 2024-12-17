@@ -13,7 +13,7 @@ const VerifyEmail = () => {
     e.preventDefault();
 
     try {
-      await axios.post('{process.env.REACT_APP_BACKEND_URL}/auth/verify-email', { email: state.email, otp });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/verify-email`, { email: state.email, otp });
       setMessage('Email verified successfully!');
       setError('');
       setTimeout(() => {
