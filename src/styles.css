@@ -116,6 +116,76 @@ body {
   padding: 20px;
   flex: 1;
 }
+/* Gallery Section */
+.gallery-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.gallery-section h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  max-width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Styling */
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 500px;
+  object-fit: contain;
+  background-color: #f0f0f0;
+}
+
+/* Navigation Arrows */
+.carousel-buttons {
+  position: relative;
+  top: 50%;
+  width: 10%;
+  display: flex;
+  justify-content: space-between; /* Align arrows far left and far right */
+  transform: translateY(-50%);
+  pointer-events: none; /* Allows clicks only on buttons */
+}
+
+.carousel-buttons button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  pointer-events: all; /* Make buttons clickable */
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Adjust button positioning */
+.carousel-buttons button:first-child {
+  margin-left: 1px; /* Left arrow spacing */
+}
+
+.carousel-buttons button:last-child {
+  margin-right: 1px; /* Right arrow spacing */
+}
+
+.carousel-buttons button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
 
 /* Section Styling */
 section {
@@ -228,3 +298,5 @@ button:hover {
 .info-message {
   color: blue;
 }
+
+

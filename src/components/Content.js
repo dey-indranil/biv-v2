@@ -1,12 +1,22 @@
-import React from 'react';
-import Section from './Section';
-import '../styles.css';
+import React from "react";
+import Section from "./Section";
+import Carousel from "./Carousel";
+import "../styles.css";
 
 const Content = ({ sections }) => {
   return (
     <main className="content">
       {sections.map((section, index) => (
-        <Section key={index} title={section.title} content={section.content} />
+        <div key={index}>
+          {section.title === "Gallery" ? (
+            <div className="gallery-section">
+              <h2>{section.title}</h2>
+              <Carousel />
+            </div>
+          ) : (
+            <Section title={section.title} content={section.content} />
+          )}
+        </div>
       ))}
     </main>
   );

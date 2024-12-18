@@ -7,6 +7,7 @@ import Register from './components/Register';
 import './styles.css';
 import VerifyEmail from './components/VerifyEmail';
 import Login from './components/Login';
+import Upload from "./components/Upload";
 
 const sections = {
   home: { title: "Home", content: "Welcome to our community Bongmilanti!" },
@@ -20,6 +21,7 @@ const sections = {
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState(null);
   return (
     <Router>
       <div>
@@ -36,7 +38,8 @@ const App = () => {
             <Route path="/contact-us" element={<Content sections={[sections.contactUs]} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUserRole={setUserRole}/>} />
+            {userRole === "admin" && <Route path="/upload" element={<Upload />} />}
           </Routes>
         </div>
       </div>
